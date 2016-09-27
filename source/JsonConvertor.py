@@ -540,7 +540,7 @@ def processDateTime(oldJsonList):
 def readOldJson(fileName, list_list):
     fp = open(fileName, 'r')
     dict_json = json.loads(fp.read())
-#    json.dump(dict_json, open('Temp/rawjson.json', 'w'))
+#    json.dump(dict_json, open('../Temp/rawjson.json', 'w'))
 
     key = ""
     oldJsonList = []
@@ -655,14 +655,14 @@ def convert(fileName , dict_element, list_list, new_Json_Template):
     ret = readOldJson(fileName, list_list)
     oldJsonList = ret[0]
     json_list_list = ret[1]
-    json.dump(oldJsonList, open('Temp/oldjsonfile.json', 'w'))
-#    json.dump(json_list_list, open('Temp/oldjsonListfile.json', 'w'))
+#    json.dump(oldJsonList, open('../Temp/oldjsonfile.json', 'w'))
+#    json.dump(json_list_list, open('../Temp/oldjsonListfile.json', 'w'))
 
     new_Json = processTemplate(new_Json_Template, json_list_list)
 
-#    json.dump(new_Json, open('Temp/newjsontemplate.json', 'w'))
+#    json.dump(new_Json, open('../Temp/newjsontemplate.json', 'w'))
 
-#    json.dump(list(dict_element.keys()), open('Temp/dict_element_key_list.json', 'w'))
+#    json.dump(list(dict_element.keys()), open('../Temp/dict_element_key_list.json', 'w'))
 
     list_element_keys = list(dict_element.keys())
 
@@ -698,35 +698,44 @@ def convert(fileName , dict_element, list_list, new_Json_Template):
 
 #########################################################################
 
+def convertFiles(source, dest, new_Json_Template, dict_element, list_list):
+    os.mkdir(dest)
+    for root, dirs, files in os.walk( source ):
+        if len(dirs) == 0:
+            for OneFileName in files :
+                inputFileName = root + "/" + OneFileName
+                outputFileName = dest + root[8:len(root)] + "/" + OneFileName
+                new_Json_Temp = copyItem(new_Json_Template)
+                new_Json = convert(inputFileName, dict_element, list_list, new_Json_Temp)
+
+                json.dump(new_Json, open(outputFileName, 'w'))
+                print ("%s is OK" %(OneFileName))
+        else:
+            for dir in dirs:
+                os.mkdir(dest + "/" + root[8:len(root)] + "/" + dir)
+    return
+
 #########################################################################
-tempdir = "Temp"
+tempdir = "../Temp"
 delete_file_folder(tempdir)
 os.mkdir(tempdir)
 
-fileName = "data/dictionary.xls"
+fileName = "../data/dictionary.xls"
 dict_element = OrderedDict()
 list_list = []
 getDictionary(fileName, dict_element, list_list)
 
-#json.dump(list_list, open('Temp/dictionarylistfile.json', 'w'))
-#json.dump(dict_element, open('Temp/dictionaryelementfile.json', 'w'))
+#json.dump(list_list, open('../Temp/dictionarylistfile.json', 'w'))
+#json.dump(dict_element, open('../Temp/dictionaryelementfile.json', 'w'))
 
 new_Json_Template = readTemplate(fileName)
-#json.dump(new_Json_Template, open('Temp/jsontemplate.json', 'w'))
+#json.dump(new_Json_Template, open('../Temp/jsontemplate.json', 'w'))
 
-source = "input"
-dest = "output"
+source = "../input"
+dest = "../output"
 delete_file_folder(dest)
-os.mkdir(dest)
-for root, dirs, files in os.walk( source ):
-    for OneFileName in files :
-        inputFileName = source + "/" + OneFileName
-        outputFileName = dest + "/" + OneFileName
-        new_Json_Temp = copyItem(new_Json_Template)
-        new_Json = convert(inputFileName, dict_element, list_list, new_Json_Temp)
 
-        json.dump(new_Json, open(outputFileName, 'w'))
-        print ("%s is OK" %(OneFileName))
+convertFiles(source, dest, new_Json_Template, dict_element, list_list)
 
 print ("All finished!")
 

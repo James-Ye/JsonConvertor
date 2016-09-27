@@ -1,0 +1,60 @@
+ {
+    "TransactionInput": {
+        "Command": "",
+        "PricingInput": {
+            "Agent": {
+                "SaleLoc": "PEK",
+                "CRS": "1E"
+            },
+            "Pnr": {
+                "Passenger": [
+                    {
+                        "PaxType": "ADT",
+                        "DiscountModifier": {
+                            "DiscountType": "N/A"
+                        }
+                    }
+                ],
+                "Segments": [
+                    {
+                        "IsForceStopover": "Y",
+                        "IsForceConnection": "N",
+                        "ForceFareBreak": "NO",
+                        "IsOpen": "N",
+                        "StopQuantity": 0,
+                        "Origin": "BJS",
+                        "Destination": "TYO",
+                        "MarketingCarrier": "BE",
+                        "DepDate": "20160527",
+                        "DepTime": "1200",
+                        "ArrDate": "20160527",
+                        "ArrTime": "1400",
+                        "Status": "U"
+                    }
+                ]
+            },
+            "Options": {
+                "AcctCodeAppl": "N",
+                "AllEndosAppl": "Y",
+                "IsEtkt": "Y",
+                "FbcInHfcAppl": "Y",
+                "FboxCurOverride": "N",
+                "InterlineOverride": "Y",
+                "IsBestbuy": "N",
+				"PrvtPublic": "Both",
+                "TaxDetailAppl": "Y",
+                "QualTktDesignator": {
+                    "IndicatorAppl": "N"
+                },
+                "FilterPtcAppl": "N",
+                "TaxSummaryAppl": "Y",
+                "Diagnostic": {
+                    "DiagnosticType": {
+                        "SliceAndDice": "Y",
+				"FareRetrieve":"Y"
+                    }
+                }
+            }
+        }
+    }
+}

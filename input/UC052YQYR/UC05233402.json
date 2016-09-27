@@ -1,0 +1,88 @@
+{
+	"TransactionInput": {
+		"Command": "",
+		"PricingInput": {
+			"Agent": {
+				"IataNum": "08307880",
+				"SaleLoc": "BJS",
+				"CRS": "1E",
+				"Carrier": "AE",
+				"Office": "BJS723",
+				"IsAgency": "N"
+			},
+			"Pnr": {
+				"Passenger": [
+					{
+						"PaxType": "ADT",
+						"Count": 1,
+						"DiscountModifier": {
+							"DiscountType": "N/A"
+						}
+					}
+				],
+				"Segments": [
+					{
+						"IsForceStopover": "Y",
+						"IsForceConnection": "N",
+						"ForceFareBreak": "NO",
+						"IsOpen": "N",
+						"StopQuantity": 0,
+						"Origin": "ORD",
+						"Destination": "TYO",
+						"MarketingCarrier": "CX",
+						"FlightNum": "001",
+						"BookingCode": "Y",
+						"DepDate": "20181001",
+						"DepTime": "1200",
+						"ArrDate": "20181001",
+						"ArrTime": "1430",
+						"Status": "S"
+					},
+					{
+						"IsForceStopover": "Y",
+						"IsForceConnection": "N",
+						"ForceFareBreak": "NO",
+						"IsOpen": "N",
+						"StopQuantity": 0,
+						"Origin": "TYO",
+						"Destination": "ORD",
+						"MarketingCarrier": "CX",
+						"FlightNum": "001",
+						"BookingCode": "Y",
+						"DepDate": "20181003",
+						"DepTime": "1200",
+						"ArrDate": "20181003",
+						"ArrTime": "1430",
+						"Status": "S"
+					}
+				]
+			},
+			"Options": {
+				"AcctCodeAppl": "N",
+				"AllEndosAppl": "Y",
+				"TicketingDate": "20180926",
+				"IsEtkt": "Y",
+				"FbcInHfcAppl": "Y",
+				"FboxCurOverride": "N",
+				"InterlineOverride": "Y",
+				"PlatingCarrier": "AE",
+                                "YqyrOnly": "Y",
+				"IsBestbuy": "N",
+				"TktLoc": "BJS",
+				"TaxDetailAppl": "Y",
+				"QualTktDesignator": {
+					"IndicatorAppl": "N"
+				},
+				"FilterPtcAppl": "N",
+				"TaxSummaryAppl": "Y",
+				"Diagnostic": {
+					"DiagnosticType": {
+						"SliceAndDice": "Y",
+                                                "Category":"Y",
+                                                "YQYR": "Y"
+					}
+				}
+			}
+		}
+	}
+}
