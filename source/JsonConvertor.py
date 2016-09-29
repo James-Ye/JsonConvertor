@@ -701,16 +701,15 @@ def convert(fileName , dict_element, list_list, new_Json_Template):
 def convertFiles(source, dest, new_Json_Template, dict_element, list_list):
     os.mkdir(dest)
     for root, dirs, files in os.walk( source ):
-        if len(dirs) == 0:
-            for OneFileName in files :
-                inputFileName = root + "/" + OneFileName
-                outputFileName = dest + root[8:len(root)] + "/" + OneFileName
-                new_Json_Temp = copyItem(new_Json_Template)
-                new_Json = convert(inputFileName, dict_element, list_list, new_Json_Temp)
+        for OneFileName in files :
+            inputFileName = root + "/" + OneFileName
+            outputFileName = dest + root[8:len(root)] + "/" + OneFileName
+            new_Json_Temp = copyItem(new_Json_Template)
+            new_Json = convert(inputFileName, dict_element, list_list, new_Json_Temp)
 
-                json.dump(new_Json, open(outputFileName, 'w'))
-                print ("%s is OK" %(OneFileName))
-        else:
+            json.dump(new_Json, open(outputFileName, 'w'))
+            print ("%s is OK" %(OneFileName))
+        if len(dirs) != 0:
             for dir in dirs:
                 os.mkdir(dest + "/" + root[8:len(root)] + "/" + dir)
     return
